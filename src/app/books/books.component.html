@@ -4,6 +4,10 @@
   </div>
 
   <div class="card-body">
+    <div *ngIf="success" class="alert alert-success">
+      {{ success }}
+    </div>
+
     <div *ngIf="error" class="alert alert-danger">
       {{ error }}
     </div>
@@ -15,6 +19,7 @@
           <th>Title</th>
           <th>Author</th>
           <th>Description</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +28,11 @@
           <td>{{ book.title }}</td>
           <td>{{ book.author }}</td>
           <td>{{ book.description }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id!)">
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

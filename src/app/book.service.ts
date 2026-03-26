@@ -26,4 +26,12 @@ export class BookService {
       })
     );
   }
+
+  delete(id: number) {
+    return this.http.post(`${this.baseUrl}/delete.php`, { id: id }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }

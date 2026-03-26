@@ -12,6 +12,7 @@ import { Book } from '../book';
 export class BooksComponent implements OnInit {
   books: Book[] = [];
   error = '';
+  success = '';
 
   constructor(private bookService: BookService) {}
 
@@ -26,6 +27,25 @@ export class BooksComponent implements OnInit {
       },
       error: (err) => {
         this.error = err.error?.message || 'Error loading books';
+      }
+    });
+  }
+
+  deleteBook(id: number): void {
+    this.error = '';
+    this.success = '';
+
+    if (!confirm('Are you sure you want to delete this book?')) {
+      return;
+    }
+
+    this.bookService.delete(id).subscribe({
+      next: () => {
+        this.success = 'Book deleted successfully';
+        this.loadBooks();
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Error deleting book';
       }
     });
   }
