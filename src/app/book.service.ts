@@ -34,4 +34,20 @@ export class BookService {
       })
     );
   }
+
+  getById(id: number) {
+    return this.http.get(`${this.baseUrl}/get.php?id=${id}`).pipe(
+      map((res: any) => {
+        return res['data'];
+      })
+    );
+  }
+
+  update(book: Book) {
+    return this.http.post(`${this.baseUrl}/update.php`, { data: book }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }

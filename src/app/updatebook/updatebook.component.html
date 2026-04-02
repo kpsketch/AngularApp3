@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Update Book</h4>
+  </div>
+
+  <div class="card-body">
+
+    <div *ngIf="success" class="alert alert-success">
+      {{ success }}
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <form #bookForm="ngForm" (ngSubmit)="updateBook(bookForm)">
+
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          [(ngModel)]="book.title"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Author</label>
+        <input
+          type="text"
+          name="author"
+          class="form-control"
+          [(ngModel)]="book.author"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea
+          name="description"
+          class="form-control"
+          rows="4"
+          [(ngModel)]="book.description"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        Update Book
+      </button>
+
+      <a routerLink="/list" class="btn btn-secondary ms-2">
+        Cancel
+      </a>
+
+    </form>
+
+  </div>
+</div>

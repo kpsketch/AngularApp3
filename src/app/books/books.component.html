@@ -29,7 +29,17 @@
           <td>{{ book.author }}</td>
           <td>{{ book.description }}</td>
           <td>
-            <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id!)">
+            <a
+              [routerLink]="['/update', book.id]"
+              class="btn btn-primary btn-sm me-2"
+            >
+              Edit
+            </a>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteBook(book.id!)"
+            >
               Delete
             </button>
           </td>
