@@ -50,4 +50,20 @@ export class BookService {
       })
     );
   }
+
+  register(user: any) {
+    return this.http.post(`${this.baseUrl}/register.php`, { data: user }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
+
+  login(user: any) {
+    return this.http.post(`${this.baseUrl}/login.php`, { data: user }).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }
