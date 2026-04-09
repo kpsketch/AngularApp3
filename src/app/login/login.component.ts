@@ -32,10 +32,9 @@ export class LoginComponent {
     this.bookService.login(this.user).subscribe({
       next: (res: any) => {
         if (res.success == 1) {
-          this.success = 'Login successful';
           localStorage.setItem('loggedUser', JSON.stringify(res.data));
           f.reset();
-          this.router.navigate(['/list']);
+          window.location.href = '/list';
         } else {
           this.error = res.message;
         }

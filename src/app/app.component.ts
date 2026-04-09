@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +11,22 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 })
 export class AppComponent {
   title = 'AngularApp3';
+  loggedUser: any = null;
+
+  constructor(private router: Router) {
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    const userData = localStorage.getItem('loggedUser');
+    if (userData) {
+      this.loggedUser = JSON.parse(userData);
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('loggedUser');
+    this.loggedUser = null;
+    this.router.navigate(['/login']);
+  }
 }
